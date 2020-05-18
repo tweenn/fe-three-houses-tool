@@ -21,6 +21,9 @@ export default () => {
 				original: [],
 				processed: {}
 			}
+		},
+		timers: {
+			mansory: ''
 		}
 	};
 
