@@ -8,24 +8,66 @@ export default class RelationshipLevels extends Component {
 	onClick = (event) => {
 		const maxLevel = this.props.level;
 		const level = this.props.level.replace('+', '');
-		const currentLevel = this.props.currentLevel;
-		const currentCharacter = this.props.currentCharacter;
-		const mainCharacter = this.props.mainCharacter;
+		const currentLevel = (this.props.currentLevel || { support: '' }).support;
 
 		if (level !== '') {
+			let newLevel = '';
 
-			// If same letter
-			if (level === currentLevel.replace('+', '')) {
-				if (currentLevel === maxLevel) {
-					// SET MINOR LEVEL
-				} else {
-					// SET MAJOR LEVEL
-				}
-			} else {
-				// SET MINOR LEVEL
+			if (level !== currentLevel.replace('+', '')) {
+				newLevel = level;
+			} else if (level !== maxLevel) {
+				newLevel = maxLevel;
 			}
+
+			if (newLevel !== '') {
+				this.updateSupportLevelInDB(newLevel)
+				.then(this.updateSupportLevelInApp)
+			}
+		}
+	}
+
+	updateSupportLevelInDB = (newLevel) => {
+		const db = window.feth.database.connector;
+
+		const mainCharacter = this.props.mainCharacter;
+		const currentCharacter = this.props.currentCharacter;
+
+		const currentLevel = this.props.currentLevel || {
+			support: newLevel,
+			_id: [currentCharacter, mainCharacter].sort().join('|')
+		};
+
+		currentLevel.support = newLevel;
+
+		return db.put(currentLevel);
+	}
+
+	updateSupportLevelInApp = (answer) => {
+		if (answer.ok) {
+			delete(answer.ok);
+
+			const mainCharacter = this.props.mainCharacter;
+			const currentCharacter = this.props.currentCharacter;
 			
-			console.log(event, this.props);
+			const processedData = { ...window.feth.data.processed};
+
+			processedData[mainCharacter].supportLevels = processedData[mainCharacter].supportLevels.map((supportEntry) => {
+				if (supportEntry.name === currentCharacter) {
+					supportEntry.current = answer;
+				}
+				return supportEntry;
+			});
+
+			processedData[currentCharacter].supportLevels = processedData[currentCharacter].supportLevels.map((supportEntry) => {
+				if (supportEntry.name === mainCharacter) {
+					supportEntry.current = answer;
+				}
+				return supportEntry;
+			});
+
+			window.updateApp({
+				characters: processedData
+			});
 		}
 	}
 

@@ -27,7 +27,8 @@ export default class App extends Component {
 	}
 
 	mansoryIt() {
-		setTimeout(() => {
+		window.clearTimeout(window.feth.timers.mansory);
+		window.feth.timers.mansory = setTimeout(() => {
 			// Mansory Fix for FlexboxGrid
 			const target = $('.entry');
 			target.css('width', target.css('maxWidth'));
@@ -78,12 +79,12 @@ export default class App extends Component {
 		const filters = state.filters;
 
 		return html`<div id="app" class="row">
-			<div id="form-wrapper" class="col-lg-12">
+			<div id="form-wrapper" class="col-xs-12">
 				${html`<${Form}
 					filters="${filters}"
 				/>`}
 			</div>
-			<div id="character-wrapper" class="col-lg-12">
+			<div id="character-wrapper" class="col-xs-12">
 				<div class="row">
 					${(() => {
 						return Object.keys(characters).map((character) => {

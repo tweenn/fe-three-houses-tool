@@ -37,9 +37,9 @@ export default class Form extends Component {
 		}
 
 		return html`<div class="row center-xs">
-			<div class="col-lg-8">
+			<div class="col-lg-8 col-md-10 col-xs-12">
 				<div class="row">
-					<div class="col-lg-3">
+					<div class="col-md-3 col-xs-6">
 						${html`<${Select}
 							title="Route"
 							id="route"
@@ -48,7 +48,7 @@ export default class Form extends Component {
 							options="${window.feth.data.original.routes}"
 						/>`}
 					</div>
-					<div class="col-lg-3">
+					<div class="col-md-3 col-xs-6">
 						${html`<${Select}
 							title="House"
 							id="house"
@@ -57,7 +57,7 @@ export default class Form extends Component {
 							options="${window.feth.data.original.houses}"
 						/>`}
 					</div>
-					<div class="col-lg-3">
+					<div class="col-md-3 col-xs-6">
 						${html`<${Select}
 							title="Support Level"
 							id="supportLevel"
