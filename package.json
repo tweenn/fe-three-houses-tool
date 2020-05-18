@@ -5,6 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
 	"test": "echo \"Error: no test specified\" && exit 1",
+	"monitor:dev": "gulp watch:all",
 	"deploy": "gulp clean; gulp; . deploy.sh;"
   },
   "repository": {
