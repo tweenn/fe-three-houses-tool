@@ -4,7 +4,8 @@
   "description": "A Fire Emblem Three Houses tool to keep track of support levels",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+	"test": "echo \"Error: no test specified\" && exit 1",
+	"deploy": "gulp clean; gulp; . deploy.sh;"
   },
   "repository": {
     "type": "git",
