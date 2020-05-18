@@ -1,0 +1,87 @@
+
+.display-flex {
+	display: flex;
+}
+
+.margin-0 {
+	margin: 0;
+}
+
+.width-100 {
+	width: 100%;
+}
+
+.text-left {
+	text-align: left;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+#app {
+	position: relative;
+	height: auto !important;
+}
+
+#character-wrapper {
+	position: relative;
+}
+
+#character-wrapper > .row > [class*="col-"] {
+	padding: 16px 32px;
+}
+
+#character-wrapper > .row > [class*="col-"] > .box {
+	background-color: #f0f;
+}
+
+.header {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	position: relative;
+}
+
+.header img {
+	width: 60px;
+}
+.header .title {
+	margin: auto 15px;
+}
+
+.header .bg-triangle {
+	position: absolute;
+}
+
+
+.relationships > .row {
+	height: 44px;
+}
+.relationships img {
+	width: 40px;
+}
+.relationships .letter {
+	margin: auto;
+}
+.relationships .letter:not(.hidden) {
+	cursor: pointer;
+}
+.relationships .letter.hidden {
+	cursor: default;
+	opacity: 0;
+}
+
+#form-wrapper {
+	padding: 24px 0px;
+}
+
+#form-wrapper label {
+	margin-bottom: 8px;
+	display: inline-block;
+}
+
+#form-wrapper span {
+	text-align: left;
+}
