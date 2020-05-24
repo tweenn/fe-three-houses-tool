@@ -19,6 +19,9 @@ export default class Relationship extends Component {
 		const imageURL = `./img/photos/${characters[charName].img}`;
 		const levels = character.levels;
 		const currentLevel = character.current;
+		
+		const affiliation = characters[charName].affiliation.title;
+		const affiliationImageURL = `./img/${characters[charName].affiliation.img}`;
 
 		// Hotfix for missing S support
 		if (levels.length < 4) {
@@ -27,13 +30,21 @@ export default class Relationship extends Component {
 		levels.push('');
 
 		return html`<div class="row middle-xs margin-0">
-			<div class="col-xs-3">
-				<img src="${imageURL}" alt="Image for ${charName}" />
+			<div class="col-xs character-imagery">
+				<div class="line-divider"></div>
+				<div class="image-wrapper">
+					<div class="zoom-box">
+						<img src="${imageURL}" alt="Image for ${charName}" />
+					</div>
+					<img src="${affiliationImageURL}" alt="Image for ${affiliation}" />
+				</div>
+				<div class="line-divider"></div>
 			</div>
-			<div class="col-xs-6">
+			<div class="col-xs character-name">
+				<div class="diamond-wrapper"><div class="diamond"></div></div>
 				<h3 class="title margin-0">${charName}</h3>
 			</div>
-			<div class="col-xs-3 display-flex">
+			<div class="col-xs display-flex character-support-level">
 				${(() => {
 					return levels.map((level) => {
 						return html`<${RelationshipLevels}
