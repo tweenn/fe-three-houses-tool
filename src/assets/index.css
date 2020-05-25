@@ -26,6 +26,7 @@ body {
 #app {
 	position: relative;
 	height: auto !important;
+	margin: 0;
 }
 
 #character-wrapper {
@@ -151,7 +152,8 @@ body {
 }
 
 #form-wrapper {
-	padding: 24px 0px;
+	padding: 0;
+	padding-bottom: 24px;
 }
 
 #form-wrapper label {
@@ -161,4 +163,12 @@ body {
 
 #form-wrapper span {
 	text-align: left;
+}
+
+#form-wrapper .row {
+	margin: 0;
+}
+
+#form-wrapper label {
+	padding-top: 24px;
 }
