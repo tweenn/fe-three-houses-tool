@@ -3,6 +3,8 @@ import htm from '../vendor/html.module.min.js';
 
 const html = htm.bind(h);
 
+import makeImagePath from '../handlers/make-image-url.js';
+
 import RelationshipLevels from './relationship-levels.class.js';
 
 export default class Relationship extends Component {
@@ -16,12 +18,12 @@ export default class Relationship extends Component {
 		// Current Character
 		const character = props.currentCharacter;
 		const charName = character.name;
-		const imageURL = `./img/photos/${characters[charName].img}`;
+		const imageURL = makeImagePath(`photos/${characters[charName].img}`, { w: '80px' });
 		const levels = character.levels;
 		const currentLevel = character.current;
 		
 		const affiliation = characters[charName].affiliation.title;
-		const affiliationImageURL = `./img/${characters[charName].affiliation.img}`;
+		const affiliationImageURL = makeImagePath(`${characters[charName].affiliation.img}`, { h: '40px' });
 
 		// Hotfix for missing S support
 		if (levels.length < 4) {

@@ -3,13 +3,15 @@ import htm from '../vendor/html.module.min.js';
 
 const html = htm.bind(h);
 
+import makeImagePath from '../handlers/make-image-url.js';
+
 import Relationship from './relationship.class.js';
 
 export default class Character extends Component {
 	render(props, state) {
 		const characters = props.characters;
 
-		const imageURL = `./img/photos/${props.entry.img}`;
+		const imageURL = makeImagePath(`photos/${props.entry.img}`, { w: '60px' });
 		const charName = props.name;
 		const relationships = props.entry.supportLevels;
 
