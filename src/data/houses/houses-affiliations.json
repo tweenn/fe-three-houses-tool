@@ -1,0 +1,54 @@
+{
+	"ashen-wolves": [
+		"Yuri",
+		"Balthus",
+		"Constance",
+		"Hapi"
+	],
+	"black-eagles": [
+		"Edelgard",
+		"Hubert",
+		"Ferdinand",
+		"Linhardt",
+		"Caspar",
+		"Bernadetta",
+		"Dorothea",
+		"Petra",
+		"Jeritza"
+	],
+	"blue-lions": [
+		"Dimitri",
+		"Dedue",
+		"Felix",
+		"Ashe",
+		"Sylvain",
+		"Mercedes",
+		"Annette",
+		"Ingrid"
+	],
+	"golden-deer": [
+		"Claude",
+		"Lorenz",
+		"Raphael",
+		"Ignatz",
+		"Lysithea",
+		"Marianne",
+		"Hilda",
+		"Leonie"
+	],
+	"church": [
+		"Byleth (M)",
+		"Byleth (F)",
+		"Seteth",
+		"Flayn",
+		"Hanneman",
+		"Manuela",
+		"Gilbert",
+		"Alois",
+		"Catherine",
+		"Shamir",
+		"Cyril",
+		"Rhea",
+		"Sothis"
+	]
+}

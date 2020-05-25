@@ -1,0 +1,35 @@
+{
+  "name": "fire-emblem-three-houses-tool",
+  "version": "0.1.0",
+  "description": "A Fire Emblem Three Houses tool to keep track of support levels",
+  "main": "gulpfile.js",
+  "scripts": {
+	"test": "echo \"Error: no test specified\" && exit 1",
+	"monitor:dev": "gulp watch:all",
+	"deploy": "gulp clean; gulp; . deploy.sh;"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tweenn/fe-three-houses-tool.git"
+  },
+  "keywords": [
+    "Fire",
+    "emblem",
+    "three",
+    "houses",
+    "support"
+  ],
+  "author": "Felipe Zuntini <felipezuntini@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tweenn/fe-three-houses-tool/issues"
+  },
+  "homepage": "https://fire-emblem-three-houses-tool.surge.sh/",
+  "engines": {
+    "node": "12.16.1"
+  },
+  "devDependencies": {
+    "del": "^5.1.0",
+    "gulp": "^4.0.2"
+  }
+}
