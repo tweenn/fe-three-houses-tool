@@ -1,5 +1,7 @@
 
 const gulp = require('gulp');
+const sass = require('gulp-sass');
+sass.compiler = require('node-sass');
 
 const del = require('del');
 
@@ -18,7 +20,8 @@ paths.processors = {
 		`${paths.src}/**/*.html`
 	],
 	css: [
-		`${paths.src}/**/*.css`
+		`${paths.src}/**/*.css`,
+		`${paths.src}/**/*.scss`,
 	],
 	js: [
 		`${paths.src}/**/*.js`
@@ -50,6 +53,7 @@ gulp.task('render:js', (done) => {
 
 gulp.task('render:css', (done) => {
 	return gulp.src(paths.processors.css)
+		.pipe(sass().on('error', sass.logError))
 		.pipe(gulp.dest(paths.dist));
 });
 
