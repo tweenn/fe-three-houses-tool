@@ -5,7 +5,6 @@ import dataProcessor from './handlers/data-processor.js';
 import renderTemplate from './handlers/render-template.js';
 
 $( document ).ready(function() {
-	
 	namespaceInitializer()
 	.then(databaseStarter)
 	.then(dataRetriever)
