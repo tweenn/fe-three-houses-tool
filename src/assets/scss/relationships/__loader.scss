@@ -14,8 +14,24 @@ $support-level-selected: rgba(45, 160, 235, 0.75);
 	padding-right: 0 10px;
 
 	& > .row {
+		position: relative;
+
 		height: 52px;
 		margin-top: 10px;
+
+		&:hover {
+			&::after {
+				$boxColor: rgb(100, 30, 225);
+				content: ' ';
+				position: absolute;
+				box-sizing: border-box;
+				width: 100%;
+				height: 100%;
+				box-shadow: inset 0px 0px 20px 0px $boxColor;
+				border: 2px solid $boxColor;
+				z-index: 5;
+			}
+		}
 	}
 
 	@import './imagery';
