@@ -19,19 +19,18 @@ export default class Relationship extends Component {
 		const character = props.currentCharacter;
 		const charName = character.name;
 		const imageURL = makeImagePath(`photos/${characters[charName].img}`, { w: '80px' });
-		const levels = character.levels;
+		const levels = [...character.levels].concat(['', '', '', '']).splice(0, 4);
 		const currentLevel = character.current;
+		const nameShouldHighlight = character.current?.support ? 'highlight' : '';
 		
 		const affiliation = characters[charName].affiliation.title;
 		const affiliationImageURL = makeImagePath(`${characters[charName].affiliation.img}`, { h: '40px' });
 
-		// Hotfix for missing S support
-		if (levels.length < 4) {
-			levels.push('');
+		if (character.levels[0] === 'S') {
+			levels.sort();
 		}
-		levels.push('');
 
-		return html`<div class="row middle-xs margin-0">
+		return html`<div class="row middle-xs margin-0 position-relative">
 			<div class="col-xs character-imagery">
 				<div class="line-divider"></div>
 				<div class="image-wrapper">
@@ -44,7 +43,9 @@ export default class Relationship extends Component {
 			</div>
 			<div class="col-xs character-name">
 				<div class="diamond-wrapper"><div class="diamond"></div></div>
-				<h3 class="title margin-0">${charName}</h3>
+				<h3 class="title margin-0 ${nameShouldHighlight}">
+					${charName}
+				</h3>
 			</div>
 			<div class="col-xs display-flex character-support-level">
 				${(() => {
@@ -57,6 +58,10 @@ export default class Relationship extends Component {
 						/>`;
 					});
 				})()}
+			</div>
+			<div class="footer-frame"
+				style="background-image: url('${makeImagePath('footer-circle.svg', { h: '4px' })}')"
+			>
 			</div>
 		</div>`;
 	}

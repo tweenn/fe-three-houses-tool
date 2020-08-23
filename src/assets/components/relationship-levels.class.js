@@ -1,6 +1,8 @@
 import { h, Component, render } from '../vendor/preact.module.min.js';
 import htm from '../vendor/html.module.min.js';
 
+import supportLevels from '../utilities/support-levels.js';
+
 const html = htm.bind(h);
 
 export default class RelationshipLevels extends Component {
@@ -10,7 +12,7 @@ export default class RelationshipLevels extends Component {
 		const level = this.props.level.replace('+', '');
 		const currentLevel = (this.props.currentLevel || { support: '' }).support;
 
-		if (level !== '') {
+		if ((level) && (level !== '')) {
 			let newLevel = '';
 
 			if (level !== currentLevel.replace('+', '')) {
@@ -39,12 +41,22 @@ export default class RelationshipLevels extends Component {
 
 		currentLevel.support = newLevel;
 
-		return db.put(currentLevel);
+		return db.put(currentLevel)
+		.then((data) => {
+			return {
+				...data,
+				support: newLevel
+			};
+		});
 	}
 
 	updateSupportLevelInApp = (answer) => {
 		if (answer.ok) {
+			answer['_id'] = answer.id;
+			answer['_rev'] = answer.rev;
 			delete(answer.ok);
+			delete(answer.id);
+			delete(answer.rev);
 
 			const mainCharacter = this.props.mainCharacter;
 			const currentCharacter = this.props.currentCharacter;
@@ -72,15 +84,35 @@ export default class RelationshipLevels extends Component {
 	}
 
 	render(props, state) {
-		const level = props.level.replace('+', '');
-		const currentLevel = props.currentLevel;
+		const levelLetter = props.level.replace('+', '').toUpperCase();
+		const supportLevel = props.currentLevel?.support || '';
+
+		let classes = [
+			`letter-value-${levelLetter.toLowerCase()}`
+		];
+
+		if (levelLetter === '') {
+			classes.push('hidden');
+		}
+
+		{
+			const levelValue = supportLevels.indexOf(props.level);
+			const supportValue = supportLevels.indexOf(supportLevel);
+
+			if (levelValue === supportValue) {
+				classes.push('selected');
+			} else if (levelValue < supportValue) {
+				classes.push('passed');
+			}
+		}
+		
 		
 		return html`<a
-			class="letter ${level === '' ? 'hidden' : ''}"
-			${level === '' ? 'aria-hidden="true"' : ''}
+			class="letter ${classes.join(' ')}"
+			${levelLetter === '' ? 'aria-hidden="true"' : ''}
 			onClick="${this.onClick}"
 		>
-			${level !== '' ? level : 'E'}
+			${levelLetter !== '' ? levelLetter : 'E'}
 		</a>`;
 	}
 };

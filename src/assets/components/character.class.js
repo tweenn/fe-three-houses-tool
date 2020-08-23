@@ -15,7 +15,7 @@ export default class Character extends Component {
 		const charName = props.name;
 		const relationships = props.entry.supportLevels;
 
-		return html`<div class="entry col-md-4 col-sm-12 col-xs-12">
+		return html`<div class="entry col-sm-12 col-md-6 col-lg-4 col-xl-3">
 			<div class="box">
 				<div class="header">
 					<img src="${imageURL}" alt="Image for ${charName}" />
