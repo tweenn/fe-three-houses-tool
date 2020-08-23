@@ -53,7 +53,7 @@ gulp.task('render:js', (done) => {
 
 gulp.task('render:css', (done) => {
 	return gulp.src(paths.processors.css)
-		.pipe(sass().on('error', sass.logError))
+		.pipe(sass({ style: 'compressed' }).on('error', sass.logError))
 		.pipe(gulp.dest(paths.dist));
 });
 
