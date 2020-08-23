@@ -3,6 +3,8 @@ const gulp = require('gulp');
 
 const del = require('del');
 
+const browserSync = require('browser-sync').create();
+
 const watchers = {};
 
 const paths = {
@@ -93,6 +95,13 @@ gulp.task('watch:json', (done) => {
 	done();
 });
 
+gulp.task('server', (done) => {
+	browserSync.init({
+        server: "./dist"
+	});
+	done();
+});
+
 
 gulp.task('watch:all', gulp.series(
 	'watch:html',
@@ -100,6 +109,7 @@ gulp.task('watch:all', gulp.series(
 	'watch:css',
 	'watch:img',
 	'watch:json',
+	'server'
 ));
 
 gulp.task('default', gulp.series(
