@@ -9,7 +9,7 @@ export default (url, params = {}) => {
 		processedParams = '?' + processedParams;
 	}
 
-	if (window.location.href.indexOf('localhost')) {
+	if (window.location.href.indexOf('localhost') >= 0) {
 		return `./img/${url}${processedParams}`;
 	} else {
 		return `https://afyyhxifoo.cloudimg.io/v7/${window.location.href}img/${url}${processedParams}`;
