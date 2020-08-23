@@ -1,0 +1,19 @@
+
+.header {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	position: relative;
+
+	img {
+		width: 60px;
+	}
+
+	.title {
+		margin: auto 15px;
+	}
+
+	.bg-triangle {
+		position: absolute;
+	}
+}

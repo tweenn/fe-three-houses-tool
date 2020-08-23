@@ -1,0 +1,25 @@
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: #dad6cf;
+	background-image: url('../img/papirus-texture.jpg');
+	background-blend-mode: overlay;
+}
+
+#app {
+	position: relative;
+	height: auto !important;
+	margin: 0;
+}
+
+@media only screen and (min-width:110em) {
+	.col-xl-3 {
+		flex-basis: 25%;
+		max-width: 25%;
+	}
+}
+
+@import './scss/__loader.scss';
+
+// @media

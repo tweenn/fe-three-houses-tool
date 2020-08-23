@@ -1,0 +1,39 @@
+
+.character-name {
+	position: relative;
+	width: calc( 100% - #{$character-support-level-width} - #{$character-support-level-width});
+
+	h3 {
+		color: $text-faded;
+
+		&.highlight {
+			color: $charname-highlighted;
+		}
+	}
+
+	.diamond-wrapper {
+		position: absolute;
+		left: -10px;
+		top: calc(50% - 5px);
+
+		.diamond {
+			width: 0;
+			height: 0;
+			border: 5px solid transparent;
+			border-bottom-color: rgba(125,105,85,0.35);
+			position: absolute;
+			top: -5px;
+
+			&:after {
+				content: '';
+				position: absolute;
+				left: -5px;
+				top: 5px;
+				width: 0;
+				height: 0;
+				border: 5px solid transparent;
+				border-top-color: rgba(125,105,85,0.35);
+			}
+		}
+	}
+}

@@ -1,0 +1,33 @@
+
+$character-image-width: 140px;
+$character-support-level-width: 140px;
+
+$text-faded: rgba(125, 105, 85, 0.75);
+$charname-highlighted: rgba(50, 40, 20, 0.75);
+$support-level-c: rgba(50, 40, 20, 0.75);
+$support-level-b: rgba(130, 70, 35, 0.75);
+$support-level-a: rgba(200, 90, 45, 0.75);
+$support-level-s: rgba(50, 40, 20, 0.75);
+$support-level-selected: rgba(45, 160, 235, 0.75);
+
+.relationships {
+	padding-right: 0 10px;
+
+	& > .row {
+		height: 52px;
+		margin-top: 10px;
+	}
+
+	@import './imagery';
+	@import './name';
+	@import './support-level';
+
+	.footer-frame {
+		position: absolute;
+		width: calc( 100% - #{$character-image-width} - 10px);
+		height: 4px;
+		bottom: 0;
+		right: 10px;
+		background-repeat: repeat-x;
+	}
+}

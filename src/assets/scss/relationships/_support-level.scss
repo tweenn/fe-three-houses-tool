@@ -1,0 +1,51 @@
+
+.character-support-level {
+	max-width: $character-support-level-width;
+	min-width: $character-support-level-width;
+	padding-right: 20px;
+
+	@media only screen and (max-width:23em) {
+		max-width: calc( #{$character-support-level-width} - 30px);
+		min-width: calc( #{$character-support-level-width} - 30px);
+	}
+
+	.letter {
+		margin: auto;
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: $text-faded;
+
+		&.passed {
+			&.letter-value-c {
+				color: $support-level-c;
+				text-shadow: 0px 0px 2px $support-level-c;
+			}
+			&.letter-value-b {
+				color: $support-level-b;
+				text-shadow: 0px 0px 2px $support-level-b;
+			}
+			&.letter-value-a {
+				color: $support-level-a;
+				text-shadow: 0px 0px 2px $support-level-a;
+			}
+			&.letter-value-s {
+				color: $support-level-s;
+				text-shadow: 0px 0px 2px $support-level-s;
+			}
+		}
+
+		&.selected {
+			color: $support-level-selected;
+			text-shadow: 0px 0px 3px $support-level-selected;
+		}
+
+		&:not(.hidden) {
+			cursor: pointer;
+		}
+
+		&.hidden {
+			cursor: default;
+			opacity: 0;
+		}
+	}
+}

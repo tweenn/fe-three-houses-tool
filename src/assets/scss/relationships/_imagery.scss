@@ -1,0 +1,44 @@
+.character-imagery {
+	padding-left: 0;
+	min-width: $character-image-width;
+	max-width: $character-image-width;
+
+	.image-wrapper {
+		height: 40px;
+		padding-left: 10px;
+		background: rgb(164,146,126);
+		background: linear-gradient(90deg, rgba(164,146,126,1) 0px, rgba(0,0,0,0) 80px);
+
+		img {
+			height: 40px;
+			display: block;
+			float: left;
+		}
+
+		.zoom-box {
+			position: relative;
+			width: 80px;
+			height: 40px;
+			display: block;
+			float: left;
+			overflow: hidden;
+
+			img {
+				position: absolute;
+				height: 80px;
+				top: -25px;
+			}
+		}
+	}
+
+	.line-divider {
+		height: 2px;
+		border-top-width: 1px;
+		border-bottom-width: 1px;
+		border-left-width: 0px;
+		border-top-style: solid;
+		border-bottom-style: solid;
+		border-image-source: linear-gradient(90deg, rgba(125,105,85,1) 50px, rgba(0,0,0,0) 120px);
+		border-image-slice: 1;
+	}
+}

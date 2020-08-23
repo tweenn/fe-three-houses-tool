@@ -1,0 +1,24 @@
+
+#character-wrapper {
+	position: relative;
+
+	& > .row {
+		& > [class*="col-"] {
+			padding: 16px 32px;
+
+			@media only screen and (max-width:23em) {
+				padding: 16px 4px;
+			}
+		}
+	}
+
+	.box {
+		padding: 15px 0;
+		background-color: #d8d1c59e;
+		box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.75),
+			inset 3px 3px 10px 0px rgba(0,0,0,0.30);
+		border-radius: 5px;
+		background-image: url('../img/papirus-texture.jpg');
+		background-blend-mode: overlay;
+	}
+}
