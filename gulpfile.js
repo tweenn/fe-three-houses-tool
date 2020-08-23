@@ -25,7 +25,8 @@ paths.processors = {
 	],
 	img: [
 		`${paths.src}/**/*.jpg`,
-		`${paths.src}/**/*.png`
+		`${paths.src}/**/*.png`,
+		`${paths.src}/**/*.svg`,
 	],
 	json: [
 		`${paths.src}/**/*.json`
