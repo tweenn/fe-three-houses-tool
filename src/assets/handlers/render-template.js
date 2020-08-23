@@ -7,5 +7,5 @@ import App from '../components/app.class.js';
 const html = htm.bind(h);
 
 export default () => {
-	render(html`<${App} />`, document.body);
+	render(html`<${App} />`, $('body > div').first().get(0));
 }
