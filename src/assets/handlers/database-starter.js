@@ -1,7 +1,9 @@
 
 export default () => {
 	const dbName = window.feth.database.name;
-	window.feth.database.connector = new PouchDB(dbName);
+	window.feth.database.connector = new PouchDB(dbName, {
+		revs_limit: 2
+	});
 
 	return true;
 }
