@@ -113,7 +113,7 @@ export default class RelationshipLevels extends Component {
 				} else if (supportValueIsPlus) {
 					classes.push('selected-plus');
 				}
-			} else if ((levelValue > supportValue) && (levelIsPlus)) {
+			} else if ((levelValue > supportValue) && (levelIsPlus) && (levelLetter === supportLevel.toUpperCase())) {
 				classes.push('selected-simple');
 			} else if (levelValue < supportValue) {
 				classes.push('passed');
