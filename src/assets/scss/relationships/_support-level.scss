@@ -1,8 +1,43 @@
 
+@mixin font-color-by-support-level ($sup-level) {
+	$color: '';
+
+	@if ($sup-level == 's') {
+		$color: $support-level-s;
+	} @else if ($sup-level == 'a') {
+		$color: $support-level-a;
+	} @else if ($sup-level == 'b') {
+		$color: $support-level-b;
+	} @else if ($sup-level == 'c') {
+		$color: $support-level-c;
+	} @else {
+		$color: $support-level-selected;
+	}
+
+	color: $color;
+	text-shadow: 0px 0px 2px $color;
+}
+
+@mixin font-color-by-support-level-type () {
+	&.letter-value-c {
+		@include font-color-by-support-level('c');
+	}
+	&.letter-value-b {
+		@include font-color-by-support-level('b');
+	}
+	&.letter-value-a {
+		@include font-color-by-support-level('a');
+	}
+	&.letter-value-s {
+		@include font-color-by-support-level('s');
+	}
+}
+
 .character-support-level {
 	max-width: $character-support-level-width;
 	min-width: $character-support-level-width;
 	padding-right: 20px;
+	padding-top: 10px;
 
 	@media only screen and (max-width:23em) {
 		max-width: calc( #{$character-support-level-width} - 30px);
@@ -16,28 +51,74 @@
 		color: $text-faded;
 		z-index: 10;
 
-		&.passed {
-			&.letter-value-c {
-				color: $support-level-c;
-				text-shadow: 0px 0px 2px $support-level-c;
+		&.is-plus {
+			position: relative;
+
+			&::before {
+				content: '>';
+				position: absolute;
+				top: -14px;
+				left: 0;
+				font-weight: bold;
+				font-size: 0.85rem;
 			}
-			&.letter-value-b {
-				color: $support-level-b;
-				text-shadow: 0px 0px 2px $support-level-b;
+
+			&::after {
+				content: '>';
+				position: absolute;
+				top: -14px;
+				right: 0;
+				font-weight: bold;
+				font-size: 0.85rem;
 			}
-			&.letter-value-a {
-				color: $support-level-a;
-				text-shadow: 0px 0px 2px $support-level-a;
+
+			&.selected-simple,
+			&.selected-plus {
+				@include font-color-by-support-level-type();
 			}
-			&.letter-value-s {
-				color: $support-level-s;
-				text-shadow: 0px 0px 2px $support-level-s;
+
+			&.selected-simple {
+				&::before {
+					@include font-color-by-support-level('');
+				}
+				&::after {
+					color: $text-faded;
+				}
+			}
+			&.selected-plus {
+				&.letter-value-c {
+					&::before {
+						@include font-color-by-support-level('c');
+					}
+				}
+				&.letter-value-b {
+					&::before {
+						@include font-color-by-support-level('b');
+					}
+				}
+				&.letter-value-a {
+					&::before {
+						@include font-color-by-support-level('a');
+					}
+				}
+				&.letter-value-s {
+					&::before {
+						@include font-color-by-support-level('s');
+					}
+				}
+
+				&::after {
+					@include font-color-by-support-level('');
+				}
 			}
 		}
 
+		&.passed {
+			@include font-color-by-support-level-type();
+		}
+
 		&.selected {
-			color: $support-level-selected;
-			text-shadow: 0px 0px 3px $support-level-selected;
+			@include font-color-by-support-level('');
 		}
 
 		&:not(.hidden) {

@@ -17,6 +17,8 @@ export default class RelationshipLevels extends Component {
 
 			if (level !== currentLevel.replace('+', '')) {
 				newLevel = level;
+			} else if ((currentLevel === maxLevel) && (maxLevel.length > 1)) {
+				newLevel = level;
 			} else if (level !== maxLevel) {
 				newLevel = maxLevel;
 			}
@@ -86,6 +88,7 @@ export default class RelationshipLevels extends Component {
 	render(props, state) {
 		const levelLetter = props.level.replace('+', '').toUpperCase();
 		const supportLevel = props.currentLevel?.support || '';
+		const levelIsPlus = props.level.length > 1;
 
 		let classes = [
 			`letter-value-${levelLetter.toLowerCase()}`
@@ -95,12 +98,23 @@ export default class RelationshipLevels extends Component {
 			classes.push('hidden');
 		}
 
+		if (levelIsPlus) {
+			classes.push('is-plus');
+		}
+
 		{
 			const levelValue = supportLevels.indexOf(props.level);
 			const supportValue = supportLevels.indexOf(supportLevel);
+			const supportValueIsPlus = supportLevel.length > 1;
 
 			if (levelValue === supportValue) {
-				classes.push('selected');
+				if (!levelIsPlus) {
+					classes.push('selected');
+				} else if (supportValueIsPlus) {
+					classes.push('selected-plus');
+				}
+			} else if ((levelValue > supportValue) && (levelIsPlus)) {
+				classes.push('selected-simple');
 			} else if (levelValue < supportValue) {
 				classes.push('passed');
 			}
